@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resultados" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0641d723-11c0-4173-9a9e-bff0e0022e29">
+	<property name="ireport.zoom" value="1.3310000000000035"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dpipersona" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="examen" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     colaexamenes.`NombreDoctor` AS colaexamenes_NombreDoctor,
+     colaexamenes.`FechaCommit` AS colaexamenes_FechaCommit,
+     personas.`Nombre` AS personas_Nombre,
+     personas.`Apellido` AS personas_Apellido,
+     personas.`Genero` AS personas_Genero,
+     examenes.`Nombre` AS examenes_Nombre,
+     examenes.`Precio` AS examenes_Precio,
+     personas.`FechaNacimiento` AS personas_FechaNacimiento,
+     colaexamenes.`DpiPaciente` AS colaexamenes_DpiPaciente
+FROM
+     `colaexamenes` colaexamenes INNER JOIN `personas` personas ON colaexamenes.`DpiPaciente` = personas.`Dpi`
+     INNER JOIN `examenes` examenes ON colaexamenes.`IdExamen` = examenes.`Id`
+WHERE
+     colaexamenes.DpiPaciente = $P!{id}]]>
+	</queryString>
+	<field name="colaexamenes_NombreDoctor" class="java.lang.String"/>
+	<field name="colaexamenes_FechaCommit" class="java.lang.String"/>
+	<field name="personas_Nombre" class="java.lang.String"/>
+	<field name="personas_Apellido" class="java.lang.String"/>
+	<field name="personas_Genero" class="java.lang.String"/>
+	<field name="examenes_Nombre" class="java.lang.String"/>
+	<field name="examenes_Precio" class="java.lang.Double"/>
+	<field name="personas_FechaNacimiento" class="java.lang.String"/>
+	<field name="colaexamenes_DpiPaciente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<image>
+				<reportElement x="67" y="4" width="488" height="55" uuid="79b135a4-b786-4347-9309-1286fdd014a1"/>
+				<imageExpression><![CDATA["C:\\Users\\chepe ruedas\\Downloads\\BioLabZ\\src\\imagenes\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="171" splitType="Stretch">
+			<staticText>
+				<reportElement x="125" y="38" width="41" height="20" uuid="b212a79e-39cc-40aa-9b15-6c0b92b8778c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="151" width="68" height="20" uuid="586ad689-fd71-4c70-a95a-ab8f49e59b16"/>
+				<text><![CDATA[Propiedades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="38" width="43" height="20" uuid="e8fb749b-2c82-419c-964b-ed5e75f54f99"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="0" width="41" height="20" uuid="32458037-5321-4a60-b100-e29b90ebf2dd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="43" height="20" uuid="9235537c-1ee4-4434-8005-391d955921ae"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="45" height="20" uuid="0a57c3c0-0602-478f-95c0-fd7032114eb7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="88" width="38" height="20" uuid="f7bb0f7f-3651-4cc4-81d7-76ce8e845be5"/>
+				<text><![CDATA[Examen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="151" width="45" height="20" uuid="93723234-a3b2-4194-b6d7-a6785083860f"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="86" height="20" uuid="d36869bd-c208-469a-b91e-506e3dd27ca6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FechaNacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="24" height="20" uuid="347c232b-dbf7-4744-ab9c-1883a8329bb2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DPI]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="166" y="42" width="90" height="17" uuid="4c22e8c2-6b37-4b31-92ab-ce61a19c0625"/>
+				<textFieldExpression><![CDATA[$F{colaexamenes_NombreDoctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="42" width="82" height="17" uuid="2e01b6b4-5883-44c1-a5e7-badd2eb38996"/>
+				<textFieldExpression><![CDATA[$F{colaexamenes_FechaCommit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="3" width="74" height="16" uuid="07d4dfc0-04f8-4eab-a028-3bb9d14bfcca"/>
+				<textFieldExpression><![CDATA[$F{colaexamenes_DpiPaciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="3" width="90" height="16" uuid="c281dda3-082a-4a37-88bc-9cebc01d14e0"/>
+				<textFieldExpression><![CDATA[$F{personas_Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="42" width="41" height="17" uuid="fe29d547-5bbf-4376-899a-1ba6506cef9b"/>
+				<textFieldExpression><![CDATA[$F{personas_Genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="4" width="82" height="16" uuid="ed63e5ef-ca32-49f5-9dae-ef48e161acc2"/>
+				<textFieldExpression><![CDATA[$F{personas_Apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="517" y="4" width="55" height="16" uuid="5523d1d4-bbb8-4579-b8ac-e3822b155bc6"/>
+				<textFieldExpression><![CDATA[$F{personas_FechaNacimiento}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="24" y="19" width="81" height="1" uuid="f6d637da-2786-4ab0-af5c-353546f4b5fb"/>
+			</line>
+			<line>
+				<reportElement x="166" y="19" width="100" height="1" uuid="41794c69-b370-413b-b86b-6fa3552c5358"/>
+			</line>
+			<line>
+				<reportElement x="325" y="19" width="100" height="1" uuid="4767554a-bb45-413f-a188-4ebba5f6fcad"/>
+			</line>
+			<line>
+				<reportElement x="517" y="20" width="55" height="1" uuid="0f5dffdf-a5d1-4599-b0ba-453d60924488"/>
+			</line>
+			<line>
+				<reportElement x="45" y="58" width="41" height="1" uuid="27fc2654-0958-4911-9e3d-92d78c7da618"/>
+			</line>
+			<line>
+				<reportElement x="166" y="58" width="100" height="1" uuid="b17b7b8f-88c5-4f6a-bc34-2b13289e9291"/>
+			</line>
+			<line>
+				<reportElement x="327" y="59" width="98" height="1" uuid="583a24b4-d890-4586-a1c3-1dda20b68951"/>
+			</line>
+			<textField>
+				<reportElement x="223" y="109" width="114" height="18" uuid="c5b44b12-d7f1-4af2-a73e-8fabe92b83cc"/>
+				<textFieldExpression><![CDATA[$F{examenes_Nombre}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="223" y="126" width="100" height="1" uuid="d7de701d-622d-4bf8-99cc-3d71d2927f6a"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="527" y="0" width="45" height="20" uuid="88806feb-9107-4d30-9983-75458527ff59"/>
+				<textFieldExpression><![CDATA[$F{examenes_Precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="125" height="20" uuid="9bf1861a-602d-4d6d-b978-742ead4178f5"/>
+				<textFieldExpression><![CDATA[$F{colaexamenes_DescripcionExamen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
